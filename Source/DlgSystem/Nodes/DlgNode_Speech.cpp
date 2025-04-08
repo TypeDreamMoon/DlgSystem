@@ -14,7 +14,7 @@ void UDlgNode_Speech::OnCreatedInEditor()
 	{
 		return;
 	}
-	NodeData = NewObject<UDlgNodeData>(this, Settings->DefaultCustomNodeDataClass.Get(), NAME_None, GetMaskedFlags(RF_PropagateToSubObjects), NULL);
+	NodeData = NewObject<UDlgNodeData>(this, Settings->DefaultCustomNodeDataClass.LoadSynchronous(), NAME_None, GetMaskedFlags(RF_PropagateToSubObjects), NULL);
 }
 
 

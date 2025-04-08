@@ -7,6 +7,10 @@
 #include "Nodes/DlgNode_Selector.h"
 #include "Nodes/DlgNode_Speech.h"
 
+FDlgEdge::FDlgEdge(int32 InTargetIndex) : TargetIndex(InTargetIndex)
+{
+}
+
 bool FDlgEdge::IsTextVisible(const UDlgNode& ParentNode)
 {
 	// Selector node

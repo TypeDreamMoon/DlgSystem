@@ -25,7 +25,7 @@ struct DLGSYSTEM_API FDlgEdge
 
 public:
 	// Creates a simple edge without text, without conditions
-	FDlgEdge(int32 InTargetIndex = INDEX_NONE) : TargetIndex(InTargetIndex) {}
+	FDlgEdge(int32 InTargetIndex = INDEX_NONE);
 
 	//
 	// ICppStructOps Interface
@@ -37,6 +37,7 @@ public:
 			SpeakerState == Other.SpeakerState &&
 			Text.EqualTo(Other.Text) &&
 			bIncludeInAllOptionListIfUnsatisfied == Other.bIncludeInAllOptionListIfUnsatisfied &&
+			bAutoNext == Other.bAutoNext &&
 			TextArguments == Other.TextArguments &&
 			Conditions == Other.Conditions;
 	}
@@ -132,8 +133,14 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "DialogueEdge")
 	bool bIncludeInAllOptionListIfUnsatisfied = true;
 
+	// If true, the dialogue will automatically advance to the next node after this edge is selected.
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="DialogueEdge")
+	bool bAutoNext = false;
+
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Instanced, Category = "DialogueEdge")
 	UDlgNodeData* EdgeData = nullptr;
+
+
 
 protected:
 	// Some Variables are here to stop misuse
